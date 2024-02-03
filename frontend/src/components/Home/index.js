@@ -18,10 +18,22 @@ export const Home = () => {
     }, 400)
   }, [])
 
+  //   const fetchBackendData = async () => {
+  //     try {
+  //       const response = await axios.post('http://localhost:8000/api/algorithm') // Adjust endpoint URL and changed from axios.get to axios.post
+  //       setBackendOutput(response.data.result) // Changed from response.data to response.data.result
+  //     } catch (error) {
+  //       console.error('Error fetching backend data:', error)
+  //       // Handle errors gracefully, e.g., display an error message
+  //     }
+  //   }
   const fetchBackendData = async () => {
     try {
-      const response = await axios.post('http://localhost:8000/api/algorithm') // Adjust endpoint URL and changed from axios.get to axios.post
-      setBackendOutput(response.data.result) // Changed from response.data to response.data.result
+      const response = await axios.post('http://localhost:8000/api/algorithm', {
+        string: 'test',
+        integer: 5,
+      }) // Adjust endpoint URL and changed from axios.get to axios.post
+      setBackendOutput(response.data.result.join(', ')) // Changed from response.data to response.data.result
     } catch (error) {
       console.error('Error fetching backend data:', error)
       // Handle errors gracefully, e.g., display an error message
