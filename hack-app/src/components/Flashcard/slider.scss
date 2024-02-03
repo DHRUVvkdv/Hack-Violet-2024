@@ -1,0 +1,37 @@
+// components/Flashcard/Slider.scss
+
+/* General styles for the slider */
+.react-slider {
+    position: relative;
+    touch-action: pan-y;
+  }
+  
+  /* Styles for the slider bar */
+  .react-slider .bar {
+    position: absolute;
+    height: 6px;
+    background-color: #3498db;
+  }
+  
+  /* Styles for the slider handle */
+  .react-slider .handle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #3498db;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .react-slider .handle:hover {
+    background-color: #2c3e50;
+  }
+  
+  /* Styles for the slider tracks */
+  .react-slider .track {
+    position: absolute;
+    height: 6px;
+    background-color: #ccc;
+  }
+  

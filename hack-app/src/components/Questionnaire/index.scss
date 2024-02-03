@@ -1,0 +1,14 @@
+// components/Questionnaire/index.scss
+
+.questionnaire {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* This will make sure the content takes at least the full height of the viewport */
+  }
+  
+  .flashcard-container {
+    margin-top: 20px; /* Add margin or adjust as needed */
+  }
+  

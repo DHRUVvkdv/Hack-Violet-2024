@@ -1,0 +1,33 @@
+.home-page {
+
+    .text-zone {
+        position: absolute;
+        left: 10%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40%;
+        max-height: 90%;
+
+        // -webkit-text-stroke: 1px black;
+    }
+
+    h1 {
+        color: #fff;
+        font-size: 90px;
+        margin: 0;
+        font-family: 'Coolvetica';
+        font-weight: 400;
+
+    }
+
+    h2 {
+        color: #8d8d8d;
+        margin-top: 20px;
+        font-weight: 400;
+        font-size: 11px;
+        font-family: sans-serif;
+        letter-spacing: 3px;
+        animation: fadeIn 1s 1.8s backwards;
+    }
+    
+}

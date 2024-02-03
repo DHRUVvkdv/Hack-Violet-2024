@@ -1,0 +1,74 @@
+// components/FlashcardWithCalendar/index.scss
+@import url("https://cdn.syncfusion.com/ej2/material.css");
+
+.flashcard-with-calendar {
+  width: 60vw;
+  height: 35vw;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  background-color: #fff1fe;
+
+  &:hover {
+    transform: scale(1.01);
+  }
+
+  &.show-answer {
+    .card-content {
+      transform: rotateY(180deg);
+    }
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+
+    .question {
+      padding: 16px;
+      text-align: center;
+      font-size: 16px;
+      backface-visibility: hidden;
+    }
+
+    .calendar-container {
+      width: 100%;
+      padding: 20px;
+    }
+
+    .answer {
+      padding: 16px;
+      text-align: center;
+      font-size: 16px;
+      backface-visibility: hidden;
+      transform: rotateY(180deg);
+    }
+  }
+
+  .reveal-answer-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+      background-color: #fff;
+      color: #3498db;
+    }
+  }
+
+  .hidden {
+    display: none;
+  }
+}

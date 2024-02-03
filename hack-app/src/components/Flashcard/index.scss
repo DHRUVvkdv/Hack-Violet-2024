@@ -1,0 +1,81 @@
+// components/Flashcard/index.scss
+
+.flashcard {
+    width: 60vw;
+    height: 35vw;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background-color: #fff1fe;
+  
+    &:hover {
+      transform: scale(1.01);
+    }
+  
+    &.show-answer {
+      .card-content {
+        transform: rotateY(180deg);
+      }
+    }
+  
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.3s ease;
+    }
+  
+    .question,
+    .answer {
+      padding: 16px;
+      text-align: center;
+      font-size: 16px;
+      backface-visibility: hidden;
+    }
+  
+    .question {
+      background-color: #3498db;
+      color: #fff;
+  
+      p {
+        margin-bottom: 10px;
+      }
+  
+      .answer-choice {
+        padding: 8px 16px;
+        margin: 5px;
+        background-color: #fff;
+        border: 1px solid #3498db;
+        color: #3498db;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  
+        &:hover {
+          background-color: #3498db;
+          color: #fff;
+        }
+  
+        &.selected {
+          background-color: #3498db;
+          color: #fff;
+          border-color: #fff;
+        }
+      }
+    }
+  
+    .answer {
+      background-color: #2ecc71;
+      color: #fff;
+      transform: rotateY(180deg);
+    }
+  
+    .hidden {
+      display: none;
+    }
+  }
+  
