@@ -31,7 +31,7 @@ export const Home = () => {
     try {
       const response = await axios.post('http://localhost:8000/api/algorithm', {
         string: 'test',
-        integer: 5,
+        integer: 7,
       }) // Adjust endpoint URL and changed from axios.get to axios.post
       setBackendOutput(response.data.result.join(', ')) // Changed from response.data to response.data.result
     } catch (error) {
