@@ -21,9 +21,10 @@ const ExerciseFlashcard = ({ imageSrc, title, description, isImageOnLeft, backgr
     setIsExpanded(false);
   };
 
-  const truncatedDescription = description.length > MAX_DESCRIPTION_LENGTH
-    ? `${description.substring(0, MAX_DESCRIPTION_LENGTH)}...`
-    : description;
+  const truncatedDescription = (description ?? '').length > MAX_DESCRIPTION_LENGTH
+  ? `${description.substring(0, MAX_DESCRIPTION_LENGTH)}...`
+  : description;
+
 
   return (
     <>
