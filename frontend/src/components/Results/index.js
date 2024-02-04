@@ -119,6 +119,7 @@ const ResultsPage = () => {
         {Array.from({ length: numOfDots }, (_, index) => {
           const position = calculateDotPosition(index);
           const color = getDotColor(index);
+          outline_day = 8;
           const showOutline = index === outline_day;
           return (
             <CircleDot
