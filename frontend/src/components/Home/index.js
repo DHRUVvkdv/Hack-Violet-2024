@@ -8,8 +8,8 @@ import TopNav from '../navbar/TopNav'
 
 export const Home = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
-  const healthArray = ['h', 'e', 'a', 'l', 't', 'h', ' ']
-  const youArray = [' ', 'y', 'o', 'u']
+  const healthArray = ['r', 'h', 'y', 't', 'h', 'm', ' ']
+  const youArray = [' ', 'r', 'i', 's', 'e']
   const [backendOutput, setBackendOutput] = useState('')
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 .results-container {
-    background-image: url('./bg.jpeg'); // Adjust the path accordingly
+    background-image: url('./bg.jpg'); // Adjust the path accordingly
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -43,3 +43,16 @@
     background-color: yellow; /* Highlight color */
   }
   
+  .learn {
+    background-color: transparent;
+    //border: 2px solid #313131;
+    color: #212121;
+    //border-radius: 20px;
+    transition: .5s ease;
+
+    &:hover {
+      //background-color: #212121;
+      //color: #fff;
+      text-decoration: underline;
+    }
+  }

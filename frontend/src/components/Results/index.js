@@ -4,12 +4,14 @@ import './index.scss';
 import TopNav from '../navbar/TopNav';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
+import { Link } from 'react-router-dom'
+
 
 let outline_day;
 
 const ResultsPage = () => {
-  const [selectedDot, setSelectedDot] = useState(null);
-  const [phase, setPhase] = useState('Outbreak');
+  const [selectedDot, setSelectedDot] = useState(3);
+  const [phase, setPhase] = useState('Click on a day to learn more');
   const [dateRange, setDateRange] = useState(null);
   const [email, setEmail] = useState('');
   const [periodStartDate, setPeriodStartDate] = useState(null);
@@ -61,7 +63,15 @@ const ResultsPage = () => {
         console.log(response.data);
         setPeriodDuration(response.data.duration || 3);
         setPeriodStartDate(response.data.startDate);
-        startDate = periodStartDate
+        startDate = periodStartDate;
+
+        const current_date = new Date()
+        const timeDifference = current_date - new Date(periodStartDate)
+        const magic_num = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        outline_day = ((21 + magic_num) % 28) 
+
+        setSelectedDot(outline_day);
+
       } catch (error) {
         console.error('Error:', error);
       }
@@ -92,21 +102,21 @@ const ResultsPage = () => {
     if (adj_index >= 0 && adj_index <= periodDuration) {
       return '#a06868';
     } else if (adj_index >= periodDuration + 1 && adj_index <= 14) {
-      return '#d4abb3';
-    } else if (adj_index >= 15 && adj_index <= 17) {
       return '#decbc4';
+    } else if (adj_index >= 15 && adj_index <= 17) {
+      return '#a3775b';
     } else {
-      return '#b4876b';
+      return '#d4abb3';
     }
   };
 
   const calculatePhase = (index) => {
-    console.log('periodDuration:', periodDuration); 
-    if (index >= 21 && index < (21 + periodDuration)) {
+    let adj_index = ((index + 7) % 28) + 1;
+    if (adj_index >= 0 && adj_index <= periodDuration) {
       return 'Menstrual';
-    } else if (index >= (21 + periodDuration) && index < 7) {
+    } else if (adj_index >= periodDuration + 1 && adj_index <= 14) {
       return 'Luteal';
-    } else if (index >= 7 && index < 9) {
+    } else if (adj_index >= 15 && adj_index <= 17) {
       return 'Ovulation';
     } else  {
       return 'Follicular';
@@ -171,12 +181,7 @@ const ResultsPage = () => {
         {Array.from({ length: numOfDots }, (_, index) => {
           const position = calculateDotPosition(index)
           const color = getDotColor(index)
-          const current_date = new Date()
-          console.log("sdjfensdejf curr date: ", typeof current_date)
-          const timeDifference = current_date - new Date(periodStartDate)
-          console.log("time diff: ", timeDifference)
-          const magic_num = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-          outline_day = ((21 + magic_num) % 28) 
+
           console.log("sdkjfnkjrjksndfckjs: ", typeof periodStartDate)
           const showOutline = index === outline_day
           return (
@@ -204,6 +209,9 @@ const ResultsPage = () => {
           )}
           <h1>Day {((selectedDot + 7) % 28) + 1}</h1>
           <p className="main-text">{getPhaseText()}</p>
+          <Link to="/healthdata">
+          <button className='learn'>Explore guides for each phase</button>
+          </Link>
         </div>
       )}
     </div>
