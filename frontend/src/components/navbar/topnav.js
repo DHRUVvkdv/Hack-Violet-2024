@@ -1,35 +1,58 @@
-import React, { useState } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
-import './TopNav.scss'; // Import your styles if needed
-import Popup from '../Popup/popup'; // Import the Popup component
+import React, { useState, useEffect } from 'react'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
+import './TopNav.scss'
+import Popup from '../Popup/popup'
+import axios from 'axios'
+import { jwtDecode } from 'jwt-decode'
 
 const TopNav = () => {
-  const navigate = useNavigate();
-  const [isPopupOpen, setPopupOpen] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Add this line
+  const navigate = useNavigate()
+  const [isPopupOpen, setPopupOpen] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      setIsAuthenticated(true)
+      const decoded = jwtDecode(token)
+      const email = decoded.email
+      setEmail(email)
+      axios
+        .get(`http://localhost:8000/api/users/username/${email}`)
+        .then((response) => {
+          const { firstName, lastName } = response.data
+          setName(`${firstName} ${lastName}`)
+        })
+        .catch((error) => {
+          console.error('Error:', error)
+        })
+    }
+  }, [])
 
   const openPopup = () => {
-    navigate('/');
-    setPopupOpen(true);
-  };
+    navigate('/')
+    setPopupOpen(true)
+  }
 
   const closePopup = () => {
-    setPopupOpen(false);
-  };
+    setPopupOpen(false)
+  }
 
   const handleLoginSignUp = () => {
-    // Handle login/sign-up logic
-    closePopup();
-    setIsAuthenticated(true);
-    navigate('/');
-  };
+    closePopup()
+    setIsAuthenticated(true)
+    navigate('/')
+  }
 
   const handleSignOut = () => {
-    // Handle sign-out logic
-    localStorage.removeItem('token');
-    setIsAuthenticated(false);
-    navigate('/');
-  };
+    localStorage.removeItem('token')
+    setIsAuthenticated(false)
+    navigate('/')
+  }
 
   return (
     <div className="top-nav-overlay">
@@ -52,30 +75,37 @@ const TopNav = () => {
           </li>
           <li>
             <NavLink to="healthdata" activeClassName="active">
-              Results
+              Health Data
             </NavLink>
           </li>
-          <li>
-            <button onClick={openPopup}>Login/Sign Up</button>
-          </li>
-          <li>
-            <button onClick={handleSignOut}>Sign Out</button>
-          </li>
+          {!isAuthenticated && (
+            <li>
+              <button onClick={openPopup}>Login/Sign Up</button>
+            </li>
+          )}
+          {isAuthenticated && (
+            <>
+              <li>
+                <span>Welcome, {name}!</span>
+              </li>
+              <li>
+                <button onClick={handleSignOut}>Sign Out</button>
+              </li>
+            </>
+          )}
         </ul>
 
         {isPopupOpen && (
           <Popup onClose={closePopup} setIsAuthenticated={setIsAuthenticated}>
-            {/* Add your login/sign-up form or content here */}
             <div>
               <h2>Login/Sign Up</h2>
-              {/* Add your form inputs and buttons here */}
               <button onClick={handleLoginSignUp}>Submit</button>
             </div>
           </Popup>
         )}
       </nav>
     </div>
-  );
-};
+  )
+}
 
-export default TopNav;
+export default TopNav
