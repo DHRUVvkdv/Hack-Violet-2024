@@ -31,9 +31,11 @@ const FoodFlashcard = ({ imageSrc, title, description, isImageOnLeft, background
         )}
         <div className="flashcard-content">
           <h3 className="flashcard-title">{title}</h3>
-          {!isExpanded && (
+          {isExpanded ? (
+            <p className="flashcard-description">{description}</p>
+          ) : (
             <p className="flashcard-description">
-              {description.length > 100 ? `${description.slice(0, 100)}...` : description}
+              {description && description.length > 100 ? `${description.slice(0, 100)}...` : description}
             </p>
           )}
         </div>
