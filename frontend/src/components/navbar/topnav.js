@@ -89,7 +89,7 @@ const TopNav = () => {
           {isAuthenticated && (
             <>
               <li>
-                <span>Welcome, {name}!</span>
+                <span className="welcome-text">Welcome, {name}!</span>
               </li>
               <li>
                 <button className="auth-button" onClick={handleSignOut}>
