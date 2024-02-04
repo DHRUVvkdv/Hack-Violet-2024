@@ -1,10 +1,63 @@
+// src/pages/MenstrualCyclePage/index.js
+
+import React, { useState } from 'react';
 import './index.scss';
+import ExerciseFlashcard from '../exerciseFlashcard';
 
-const HealthData = () => {
+import Weightlift from './weightlift.jpeg'
+import Running from './run.jpeg'
+import YogaImage from './yoga.jpeg'; // Import the image
 
-    return (
-        <h1>Lauda choos mera</h1>
-    )
-}
 
-export default HealthData
+const MenstrualCyclePage = () => {
+  const phases = ['Menstrual', 'Follicular', 'Ovulation', 'Luteal'];
+  const [selectedPhase, setSelectedPhase] = useState(null);
+
+  const exerciseData = {
+    Menstrual: 'Information about exercise during menstrual phase...',
+    Follicular: 'Information about exercise during follicular phase...',
+    Ovulation: 'Information about exercise during ovulation phase...',
+    Luteal: 'Information about exercise during luteal phase...',
+  };
+
+  const foodData = {
+    Veg: 'Information about vegetarian food...',
+    Vegan: 'Information about vegan food...',
+    NonVegetarian: 'Information about non-vegetarian food...',
+  };
+
+  const handlePhaseClick = (phase) => {
+    setSelectedPhase(phase);
+  };
+
+  return (
+    <div className="menstrual-cycle-page">
+      <div className="left-element">
+        {phases.map((phase) => (
+          <button
+            key={phase}
+            onClick={() => handlePhaseClick(phase)}
+            className={selectedPhase === phase ? 'selected' : ''}
+          >
+            {phase}
+          </button>
+        ))}
+      </div>
+      <div className="middle-element">
+        <h2>Exercise</h2>
+        <p>{exerciseData[selectedPhase]}</p>
+        <ExerciseFlashcard
+        imageSrc= {Weightlift}
+        title="Yoga"
+        description="Yoga focuses on flexibility, balance, and relaxation. It's beneficial for both body and mind." 
+        />
+      </div>
+      <div className="right-element">
+        <h2>Food</h2>
+        <p>{foodData[selectedPhase]}</p>
+      </div>
+    </div>
+  );
+};
+
+export default MenstrualCyclePage;
