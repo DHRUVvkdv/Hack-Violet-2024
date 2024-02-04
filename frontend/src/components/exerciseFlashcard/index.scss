@@ -1,0 +1,32 @@
+/* src/components/ExerciseFlashcard.css */
+
+.exercise-flashcard {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  
+  .flashcard-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .flashcard-content {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .flashcard-title {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  .flashcard-description {
+    font-size: 16px;
+    color: #555;
+  }
+  
