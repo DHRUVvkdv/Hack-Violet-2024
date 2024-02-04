@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const userRoutes = require("./userRoutes");
+const periodCycleRoutes = require("./periodCycleRoutes");
 
 const app = express();
 const port = 8000;
@@ -9,7 +10,8 @@ const port = 8000;
 // Middlewares
 app.use(cors());
 app.use(bodyParser.json());
-app.use("/api/users", userRoutes);
+app.use("/api/users", userRoutes, periodCycleRoutes);
+app.use("/api/data", periodCycleRoutes);
 //Sends Integer to backend
 // Your algorithm endpoint
 // app.post("/api/algorithm", (req, res) => {

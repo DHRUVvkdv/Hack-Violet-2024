@@ -12,6 +12,8 @@ const TopNav = () => {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [name, setName] = useState('')
+  const [startDate, setStartDate] = useState(new Date())
+  const [duration, setDuration] = useState(5)
 
   // Check if a JWT is stored locally when the component mounts
   useEffect(() => {
@@ -20,6 +22,8 @@ const TopNav = () => {
       setIsAuthenticated(true)
       const decoded = jwtDecode(token)
       const email = decoded.email
+      setEmail(email)
+      console.log(email)
       axios
         .get(`http://localhost:8000/api/users/username/${email}`)
         .then((response) => {
@@ -28,6 +32,8 @@ const TopNav = () => {
           // Output the name to the console
           //   console.log(`User's name: ${firstName} ${lastName}`)
           setName(`${firstName} ${lastName}`)
+          console.log('Response dATA:', response.data)
+          //   console.log(lastName)
         })
         .catch((error) => {
           console.error('Error:', error)
@@ -103,6 +109,28 @@ const TopNav = () => {
     localStorage.removeItem('token')
     setIsAuthenticated(false)
   }
+  const trackPeriodCycle = async () => {
+    try {
+      console.log(`EMAIL FROM TRACK ${email.charAt(1)}`)
+      // Define the data to send
+      const data = {
+        email, // use the email from the state
+        startDate, // use the start date from the state
+        duration, // use the duration from the state
+      }
+
+      // Make the axios request
+      const response = await axios.post(
+        'http://localhost:8000/api/data/periodCycle',
+        data
+      )
+
+      // Log the response
+      console.log(response.data)
+    } catch (error) {
+      console.error('Error:', error)
+    }
+  }
 
   return (
     <nav>
@@ -111,6 +139,7 @@ const TopNav = () => {
         <>
           <p>Welcome, {name}</p>
           <button onClick={signOut}>Sign Out</button>
+          <button onClick={trackPeriodCycle}>Track Period Cycle</button>{' '}
         </>
       ) : (
         <>
