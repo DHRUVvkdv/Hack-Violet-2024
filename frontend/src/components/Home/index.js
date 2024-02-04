@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import AnimatedLetters from '../AnimatedLetters'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import TopNav from '../navbar/TopNav'
 
 export const Home = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
@@ -30,6 +31,7 @@ export const Home = () => {
 
   return (
     <div className="container home-page">
+      <TopNav />
       <div className="text-zone">
         <h1>
           <AnimatedLetters
@@ -44,15 +46,16 @@ export const Home = () => {
             idx={15}
           />
         </h1>
-        <h2>Learn how your menstrual cycle affects your exercise and diet {backendOutput} </h2>
+        <h2>
+          Learn how your menstrual cycle affects your exercise and diet{' '}
+          {backendOutput}{' '}
+        </h2>
         <Link to="/questionnaire">
-          <button className='goto-btn'>Enter</button>
+          <button className="goto-btn">Enter</button>
         </Link>
       </div>
-
-
     </div>
-  );
+  )
 }
 
-export default Home;
+export default Home
