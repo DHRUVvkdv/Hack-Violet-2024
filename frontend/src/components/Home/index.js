@@ -2,7 +2,7 @@
 import './index.scss'
 import { useEffect, useState } from 'react'
 import AnimatedLetters from '../AnimatedLetters'
-import Logo from './Icon'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 export const Home = () => {
@@ -44,12 +44,15 @@ export const Home = () => {
             idx={15}
           />
         </h1>
-        <h2>Tech {backendOutput} </h2>
+        <h2>Learn how your menstrual cycle affects your exercise and diet {backendOutput} </h2>
+        <Link to="/questionnaire">
+          <button className='goto-btn'>Enter</button>
+        </Link>
       </div>
 
-      <Logo />
+
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;

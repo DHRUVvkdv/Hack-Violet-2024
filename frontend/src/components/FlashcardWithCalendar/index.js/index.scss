@@ -4,12 +4,11 @@
 .flashcard-with-calendar {
   width: 60vw;
   height: 35vw;
-  border-radius: 10px;
+  border-radius: 50px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
   transition: transform 0.3s ease;
-  background-color: #fff1fe;
+  background-color: #ffffff;
 
   &:hover {
     transform: scale(1.01);
@@ -39,7 +38,13 @@
 
     .calendar-container {
       width: 100%;
-      padding: 20px;
+      margin: 20px 0px 20px 60px;
+      align-items: center;
+    }
+
+    .question {
+      color: #a06868;
+      font-size: 35px;
     }
 
     .answer {

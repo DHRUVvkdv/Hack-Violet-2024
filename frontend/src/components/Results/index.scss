@@ -1,0 +1,38 @@
+.results-container {
+    background-image: url('./bg.jpeg'); // Adjust the path accordingly
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+  }
+  
+  .circle-dot-container {
+    position: absolute;
+  }
+  
+  .selected-dot-info {
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  .circle-dot {
+    position: absolute;
+    width: 20px; /* Adjust the size of the dot as needed */
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ccc; /* Default color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .circle-dot.highlight {
+    background-color: yellow; /* Highlight color */
+  }
+  

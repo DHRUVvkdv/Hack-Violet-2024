@@ -1,0 +1,37 @@
+.circular-slider-container {
+    position: relative;
+  
+    .react-circular-input__track {
+      stroke: #ff3f3f; // Adjust the color of the track as needed
+      stroke-width: 8;
+    }
+  
+    .react-circular-input__progress {
+      stroke: rgba(255, 255, 255, 0.5); // Adjust the color and alpha value for transparency
+      stroke-width: 8;
+    }
+  
+    .label-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+  
+      .phase-label {
+        font-size: 18px;
+        font-weight: bold;
+        color: #ffffff; // Adjust the color of the label as needed
+      
+        // Add additional styles for the text within CircleDot component
+        span {
+            font-family: 'Arial', sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            color: #ffffff; // Set your desired text color
+        }
+    }
+    }
+    
+  }
+  

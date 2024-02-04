@@ -33,11 +33,6 @@ const FlashcardWithCalendar = ({ question, onAnswerSelect }) => {
           )}
         </div>
       </div>
-      {!showAnswer && (
-        <button className="reveal-answer-btn" onClick={handleRevealAnswer}>
-          Reveal Answer
-        </button>
-      )}
     </div>
   );
 };

@@ -10,7 +10,6 @@ const ProgressBar = ({ currentStep, totalSteps }) => {
     <div className="progress-bar">
       <div className="background-bar"></div>
       <div className="progress" style={{ width: `${progressPercentage}%` }}></div>
-      <div className="progress-text">{`${currentStep} / ${totalSteps}`}</div>
     </div>
   );
 };
