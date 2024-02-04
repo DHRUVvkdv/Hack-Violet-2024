@@ -31,6 +31,7 @@
 
     .question {
       padding: 16px;
+      padding-bottom: 0;
       text-align: center;
       font-size: 16px;
       backface-visibility: hidden;
@@ -38,8 +39,13 @@
 
     .calendar-container {
       width: 100%;
-      margin: 10px 0px 20px 60px;
+      margin-bottom: 30px;
+      margin-top: 0;
+      margin-left: 60px;
       align-items: center;
+      padding-bottom: 30px;
+      scale: 0.95;
+      padding-top: 0;
     }
 
     .question {

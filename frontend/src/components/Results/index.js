@@ -88,11 +88,12 @@ const ResultsPage = () => {
   }
 
   const getDotColor = (index) => {
-    if (index >= 21 && index < (21 + periodDuration)) {
+    let adj_index = ((index + 7) % 28) + 1;
+    if (adj_index >= 0 && adj_index <= periodDuration) {
       return '#a06868';
-    } else if (index >= 0 && index < 7) {
+    } else if (adj_index >= periodDuration + 1 && adj_index <= 14) {
       return '#d4abb3';
-    } else if (index >= 7 && index < 9) {
+    } else if (adj_index >= 15 && adj_index <= 17) {
       return '#decbc4';
     } else {
       return '#b4876b';
@@ -101,10 +102,9 @@ const ResultsPage = () => {
 
   const calculatePhase = (index) => {
     console.log('periodDuration:', periodDuration); 
-    const adjustedDuration = (periodDuration + 22) % 28;
     if (index >= 21 && index < (21 + periodDuration)) {
       return 'Menstrual';
-    } else if (index >= 0 && index < 7) {
+    } else if (index >= (21 + periodDuration) && index < 7) {
       return 'Luteal';
     } else if (index >= 7 && index < 9) {
       return 'Ovulation';
