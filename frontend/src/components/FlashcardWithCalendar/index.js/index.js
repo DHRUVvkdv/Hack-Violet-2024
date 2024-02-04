@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { CalendarComponent } from '@syncfusion/ej2-react-calendars'
 import './index.scss'
+import { jwtDecode } from 'jwt-decode'
 
 const FlashcardWithCalendar = ({ question }) => {
   const [selectedDate, setSelectedDate] = useState(null)
@@ -31,6 +32,16 @@ const FlashcardWithCalendar = ({ question }) => {
 
   const handleRevealAnswer = () => {
     setShowAnswer(true)
+    const token = localStorage.getItem('token')
+
+    // Decode the JWT
+    const decoded = jwtDecode(token)
+
+    // Extract the email
+    const email = decoded.email
+
+    // Print the email
+    console.log(email)
   }
 
   return (
