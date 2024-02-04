@@ -42,4 +42,25 @@
   .active {
     font-weight: bold; // Style the active link as needed
   }
+  .auth-button {
+    background-color: #a06868;
+    color: white; 
+    border: none; 
+    cursor: pointer;
+    padding: 10px 20px;
+    text-align: center; 
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s; 
+    border-radius: 12px;
+    transition: transform 1.0s;
+  }
+  
+  .auth-button:hover {
+    background-color: #e997a3;
+    color: white; 
+    transform: scale(1.1);
+  }
   

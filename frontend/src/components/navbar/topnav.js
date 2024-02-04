@@ -45,6 +45,7 @@ const TopNav = () => {
   const handleLoginSignUp = () => {
     closePopup()
     setIsAuthenticated(true)
+    window.location.reload()
     navigate('/')
   }
 
@@ -80,7 +81,9 @@ const TopNav = () => {
           </li>
           {!isAuthenticated && (
             <li>
-              <button onClick={openPopup}>Login/Sign Up</button>
+              <button className="auth-button" onClick={openPopup}>
+                Login/Sign Up
+              </button>
             </li>
           )}
           {isAuthenticated && (
@@ -89,7 +92,9 @@ const TopNav = () => {
                 <span>Welcome, {name}!</span>
               </li>
               <li>
-                <button onClick={handleSignOut}>Sign Out</button>
+                <button className="auth-button" onClick={handleSignOut}>
+                  Sign Out
+                </button>
               </li>
             </>
           )}
