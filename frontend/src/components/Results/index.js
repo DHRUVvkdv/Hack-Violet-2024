@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import CircleDot from '../CircleDot'; // Adjust the import path based on your project structure
+import CircleDot from '../CircleDot';
 import './index.scss';
 
 let outline_day;
@@ -8,17 +7,23 @@ let outline_day;
 const ResultsPage = () => {
   const [selectedDot, setSelectedDot] = useState(null);
   const [phase, setPhase] = useState("Outbreak");
-  const [date_range, setDateRange] = useState("");
+  const [dateRange, setDateRange] = useState(null);
+
+  const luteal_text = "The luteal phase happens in the second part of your menstrual cycle. It begins around day 15 of a 28-day cycle and ends when you get your period. The luteal phase prepares your uterus for pregnancy by thickening your uterine lining. A disorder involving your luteal phase can affect getting and staying pregnant.";
+  const ovulation_text = "Ovulation is when a mature egg is released from an ovary and moves along a fallopian tube towards your uterus. This usually happens once each month, about two weeks before your next period. Ovulation can last from 16 to 32 hours.";
+  const folicular_text = "The follicular phase, also known as the preovulatory phase or proliferative phase, is the phase of the estrous cycle during which follicles in the ovary mature from primary follicle to a fully mature graafian follicle. It ends with ovulation.";
+  const menopausal_text = "Menopause is divided into three basic stages: perimenopause, menopause, and postmenopause. During this time, the ovaries begin to atrophy which causes a decline in the production of the hormones that stimulate the menstrual cycle; estrogen and progesterone.";
+
+
+  let startDate = new Date(2023, 2, 1);
 
   const numOfDots = 28;
-  const radius = 330; // Adjust the radius as needed
-  const centerX = 0; // Adjust the center X-coordinate as needed
-  const centerY = 0; // Adjust the center Y-coordinate as needed
+  const radius = 330;
+  const centerX = 0;
+  const centerY = 0;
 
   useEffect(() => {
-    // This effect will run after the initial render and every time 'selectedDot' changes
     if (selectedDot !== null) {
-      // Update the phase and date_range based on the selected dot
       setPhase(calculatePhase(selectedDot));
       setDateRange(calculateDateRange(selectedDot));
     }
@@ -55,17 +60,49 @@ const ResultsPage = () => {
     }
   };
 
+  const getPhaseText = () => {
+    switch (phase) {
+      case "Luteal":
+        return luteal_text;
+      case "Ovulation":
+        return ovulation_text;
+      case "Follicular":
+        return folicular_text;
+      case "Menopausal":
+        return menopausal_text;
+      default:
+        return "";
+    }
+  };
+
   const calculateDateRange = (index) => {
     const day = (index + 7) % 28 + 1;
 
     if (day >= 1 && day <= 7) {
-      return "1st to 4th Feb 2023";
+      const endDate = new Date(startDate);
+      endDate.setDate(startDate.getDate() + 6);
+      return { startDate, endDate };
     } else if (day >= 8 && day <= 12) {
-      return "5th to 11th Feb 2023";
+      const newStartDate = new Date(startDate);
+      newStartDate.setDate(startDate.getDate() + 7); 
+      const endDate = new Date(startDate);
+      endDate.setDate(startDate.getDate() + 11);
+      startDate = newStartDate;
+      return { startDate, endDate };
     } else if (day >= 13 && day <= 19) {
-      return "12th to 20th Feb 2023";
+      const newStartDate = new Date(startDate);
+      newStartDate.setDate(startDate.getDate() + 12); 
+      const endDate = new Date(startDate);
+      endDate.setDate(startDate.getDate() + 18);
+      startDate = newStartDate;
+      return { startDate, endDate };
     } else {
-      return "21st to 28th Feb 2023";
+      const newStartDate = new Date(startDate);
+      newStartDate.setDate(startDate.getDate() + 19); 
+      const endDate = new Date(startDate);
+      endDate.setDate(startDate.getDate() + 27);
+      startDate = newStartDate;
+      return { startDate, endDate };
     }
   };
 
@@ -93,17 +130,21 @@ const ResultsPage = () => {
             />
           );
         })}
-      </div>
-      {selectedDot !== null && (
-        <div className="selected-dot-info">
-          <h1>Day {(selectedDot + 7) % 28 + 1}</h1>
-          <h3>{phase}</h3>
-          <h4>{date_range}</h4>
-          <p>The virus has begun to quickly spread..</p>
         </div>
-      )}
-    </div>
-  );
-};
+              {selectedDot !== null && (
+                <div className="selected-dot-info">
+                  <h3>{phase}</h3>
+                  {dateRange && dateRange.startDate && dateRange.endDate && (
+                    <h4>
+                      {dateRange.startDate.toLocaleDateString()} to {dateRange.endDate.toLocaleDateString()}
+                    </h4>
+                  )}
+                  <h1>Day {(selectedDot + 7) % 28 + 1}</h1>
+                  <p className='main-text'>{getPhaseText()}</p>
+                </div>
+              )}
+            </div>
+          );
+        };
 
 export default ResultsPage;
