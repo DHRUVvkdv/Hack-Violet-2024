@@ -64,17 +64,17 @@ const TopNav = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="questionnaire" activeClassName="active">
+            <NavLink to="/questionnaire" activeClassName="active">
               Questionnaire
             </NavLink>
           </li>
           <li>
-            <NavLink to="results" activeClassName="active">
+            <NavLink to="/results" activeClassName="active">
               Results
             </NavLink>
           </li>
           <li>
-            <NavLink to="healthdata" activeClassName="active">
+            <NavLink to="/healthdata" activeClassName="active">
               Health Data
             </NavLink>
           </li>

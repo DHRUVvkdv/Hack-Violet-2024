@@ -7,6 +7,7 @@ import ExerciseFlashcard from '../exerciseFlashcard';
 import Weightlift from './weightlift.jpeg'
 import Running from './run.jpeg'
 import YogaImage from './yoga.jpeg'; // Import the image
+import TopNav from "../navbar/TopNav"
 
 
 const MenstrualCyclePage = () => {
@@ -32,6 +33,7 @@ const MenstrualCyclePage = () => {
 
   return (
     <div className="menstrual-cycle-page">
+        <TopNav/>
       <div className="left-element">
         {phases.map((phase) => (
           <button
@@ -48,8 +50,24 @@ const MenstrualCyclePage = () => {
         <p>{exerciseData[selectedPhase]}</p>
         <ExerciseFlashcard
         imageSrc= {Weightlift}
+        title="Weightlifting"
+        description="Yoga focuses on flexibility, balance, and relaxation. It's beneficial for both body and mind." 
+        isImageOnLeft={true}
+        backgroundColor="#e7cfcf"
+        />
+        <ExerciseFlashcard
+        imageSrc= {YogaImage}
         title="Yoga"
         description="Yoga focuses on flexibility, balance, and relaxation. It's beneficial for both body and mind." 
+        isImageOnLeft={false}
+        backgroundColor="#f5dada"
+        />
+        <ExerciseFlashcard
+        imageSrc= {Running}
+        title="Aerobic Exercise"
+        description="Yoga focuses on flexibility, balance, and relaxation. It's beneficial for both body and mind." 
+        isImageOnLeft={true}
+        backgroundColor="#e7cfcf"
         />
       </div>
       <div className="right-element">

@@ -14,9 +14,9 @@ function App() {
       {/* <TopNav /> Include the TopNav component */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="questionnaire" element={<Questionnaire />} />
-        <Route path="results" element={<Results />} />
-        <Route path="healthdata" element={<HealthData />} />
+        <Route path="/questionnaire" element={<Questionnaire />} />
+        <Route path="/results" element={<Results />} />
+        <Route path="/healthdata" element={<HealthData />} />
       </Routes>
     </>
   )
