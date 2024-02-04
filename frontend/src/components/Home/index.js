@@ -9,7 +9,7 @@ import TopNav from '../navbar/TopNav'
 export const Home = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
   const healthArray = ['h', 'e', 'a', 'l', 't', 'h', ' ']
-  const youArray = [' ', 'you']
+  const youArray = [' ', 'y', 'o', 'u']
   const [backendOutput, setBackendOutput] = useState('')
 
   useEffect(() => {

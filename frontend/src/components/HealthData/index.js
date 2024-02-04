@@ -34,7 +34,7 @@ const MenstrualCyclePage = () => {
   }
 
   const generalFoodData = {
-    Menstration:
+    Menstruation:
       'Increase your intake of iron rich foods and vitamin C. Drink soothing tea, to combat cramps. Avoid or limit fatty foods, alcohol, caffeine, and salty foods.',
     Follicular: '',
     Ovulation: '',
@@ -42,7 +42,7 @@ const MenstrualCyclePage = () => {
   }
 
   const mealFoodData = {
-    Menstration:
+    Menstruation:
       'Grilled Salmon, Kale and sweet potato salad, Spicy sprouts, Broccoli and feta pasta salad',
     Follicular: '',
     Ovulation: '',
@@ -50,7 +50,7 @@ const MenstrualCyclePage = () => {
   }
 
   const veganFoodData = {
-    Menstration:
+    Menstruation:
       'Chickpea and spinach curry, Sundried tomatoes and kidney bean chilli, Tofu tacos, Oatmeal cookies, Buddha bowl',
     Follicular: '',
     Ovulation: '',

@@ -1,38 +1,31 @@
-// components/ProgressBar/ProgressBar.scss
-.progress-bar {
-    position: relative;
-    max-width: 400px;
-    margin: 0 auto;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0 1px;
-    margin-top: 16px;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  
-  .background-bar {
-    height: 10px;
-    background-color: #ecf0f1;
-    position: absolute;
-    border-radius: 8px;
-    top: 0;
-    left: 0;
-    right: 0; /* Set right to 0 to cover the entire width */
-    z-index: -1; /* Move it behind the progress bar */
-  }
-  
-  .progress {
-    height: 10px;
-    background-color: #9b6873;
-    border-radius: 5px;
-    position: relative;
-  }
-  
-  .progress-text {
-    margin-top: 8px;
-    text-align: center;
-    color: #333;
-    font-size: 14px;
-  }
-  
+// components/ProgressBar/index.scss
+.progress-container {
+  position: relative;
+  max-width: 400px; // Adjust this value as needed
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 1px;
+  margin-top: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.background-bar {
+  height: 10px;
+  background-color: #f5dada;
+  position: absolute;
+  border-radius: 8px;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: width 0.5s ease; // Add transition for smooth animation
+}
+
+.progress {
+  height: 10px;
+  background-color: #9b6873;
+  border-radius: 5px;
+  position: relative;
+  transition: width 0.5s ease; // Add transition for smooth animation
+}
