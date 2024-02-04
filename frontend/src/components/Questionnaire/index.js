@@ -1,14 +1,29 @@
 // components/Questionnaire/index.js
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Flashcard from '../Flashcard'
 import FlashcardWithCalendar from '../FlashcardWithCalendar/index.js'
 import { useNavigate } from 'react-router-dom' // Import the useNavigate hook
 import ProgressBar from '../ProgressBar' // Import the ProgressBar component
 import './index.scss'
 import TopNav from '../navbar/TopNav.js'
+import { jwtDecode } from 'jwt-decode'
+import axios from 'axios'
 
 const Questionnaire = () => {
   const navigate = useNavigate()
+  const [email, setEmail] = useState('')
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      const decoded = jwtDecode(token)
+      const email = decoded.email
+      setEmail(email)
+      console.log(email)
+    } else {
+      alert('User Not Signed up!')
+    }
+  }, [])
 
   const flashcardsData = [
     {
@@ -25,7 +40,7 @@ const Questionnaire = () => {
       question: 'When was your last period?',
       answerType: 'calendar',
     },
-    // Add more flashcards as needed
+    // Will Add more flashcards as needed
   ]
 
   const [currentFlashcardIndex, setCurrentFlashcardIndex] = useState(0)
@@ -55,9 +70,44 @@ const Questionnaire = () => {
     }
   }
 
-  const handleSubmitButtonClick = () => {
+  function customFunction(input) {
+    switch (input) {
+      case 0:
+        return 1
+      case 1:
+        return 3
+      case 2:
+        return 5
+      case 3:
+        return 7
+      default:
+        return 'Invalid input' // Handle other cases if needed
+    }
+  }
+
+  const handleSubmitButtonClick = async () => {
     // Log the selected answers to the console
     console.log(selectedAnswers)
+    try {
+      console.log(`EMAIL FROM TRACK ${email}`)
+      // Define the data to send
+      const data = {
+        email: email, // use the email from the state
+        startDate: new Date(selectedAnswers[2]), // use the start date from the state
+        duration: customFunction(selectedAnswers[1]), // use the duration from the state
+      }
+
+      // Make the axios request
+      const response = await axios.post(
+        'http://localhost:8000/api/data/periodCycle',
+        data
+      )
+
+      // Log the response
+      console.log(response.data)
+    } catch (error) {
+      console.error('Error:', error)
+    }
 
     navigate('/results')
   }
