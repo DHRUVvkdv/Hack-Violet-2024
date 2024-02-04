@@ -1,4 +1,3 @@
-// TopNav.js
 import React, { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import './TopNav.scss'; // Import your styles if needed
@@ -7,6 +6,7 @@ import Popup from '../Popup/popup'; // Import the Popup component
 const TopNav = () => {
   const navigate = useNavigate();
   const [isPopupOpen, setPopupOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Add this line
 
   const openPopup = () => {
     navigate('/');
@@ -19,14 +19,15 @@ const TopNav = () => {
 
   const handleLoginSignUp = () => {
     // Handle login/sign-up logic
-    // For simplicity, just close the popup and navigate to the home page
     closePopup();
+    setIsAuthenticated(true);
     navigate('/');
   };
 
   const handleSignOut = () => {
     // Handle sign-out logic
-    // For simplicity, just navigate to the home page
+    localStorage.removeItem('token');
+    setIsAuthenticated(false);
     navigate('/');
   };
 
@@ -51,7 +52,7 @@ const TopNav = () => {
           </li>
           <li>
             <NavLink to="healthdata" activeClassName="active">
-              Health
+              Results
             </NavLink>
           </li>
           <li>
@@ -63,7 +64,7 @@ const TopNav = () => {
         </ul>
 
         {isPopupOpen && (
-          <Popup onClose={closePopup}>
+          <Popup onClose={closePopup} setIsAuthenticated={setIsAuthenticated}>
             {/* Add your login/sign-up form or content here */}
             <div>
               <h2>Login/Sign Up</h2>

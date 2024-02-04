@@ -5,16 +5,15 @@ import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import './Popup.scss'; // Import your styles if needed
 
-const Popup = ({ onClose, onLogin, onSignUp }) => {
+const Popup = ({ onClose, setIsAuthenticated }) => {
   const [mode, setMode] = useState('login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [showSignInForm, setShowSignInForm] = useState(true); // Define the state
-  const [showSignUpForm, setShowSignUpForm] = useState(false); // Define the state
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [showSignInForm, setShowSignInForm] = useState(true);
+  const [showSignUpForm, setShowSignUpForm] = useState(false);
   const [name, setName] = useState('');
 
   useEffect(() => {
@@ -33,11 +32,10 @@ const Popup = ({ onClose, onLogin, onSignUp }) => {
           console.error('Error:', error);
         });
     }
-  }, []);
+  }, [setIsAuthenticated]);
 
   const signIn = async () => {
     try {
-      // Attempt to sign in
       const signInResponse = await axios.post(
         'http://localhost:8000/api/users/signin',
         {
@@ -46,13 +44,11 @@ const Popup = ({ onClose, onLogin, onSignUp }) => {
         }
       );
   
-      // If sign in is successful, set isAuthenticated to true and store the JWT
       setIsAuthenticated(true);
       setShowSignInForm(false);
       localStorage.setItem('token', signInResponse.data.token);
     } catch (error) {
-        console.error('Sign in error:', error);
-      // Handle error
+      console.error('Sign in error:', error);
       if (error.response && error.response.status === 400) {
         alert(`Sign in failed: ${error.response.data.msg}`);
       } else {
@@ -60,7 +56,6 @@ const Popup = ({ onClose, onLogin, onSignUp }) => {
       }
     }
   };
-  
 
   const signUp = async () => {
     if (password !== confirmPassword) {
@@ -94,6 +89,13 @@ const Popup = ({ onClose, onLogin, onSignUp }) => {
       alert(`Signup failed: ${error.response.data}`);
     }
   };
+
+  const handleSignOut = () => {
+    localStorage.removeItem('token');
+    setIsAuthenticated(false);
+    onClose();
+  };
+
 
   const handleModeChange = (newMode) => {
     setMode(newMode);
@@ -195,6 +197,7 @@ Popup.propTypes = {
   onClose: PropTypes.func.isRequired,
   onLogin: PropTypes.func.isRequired,
   onSignUp: PropTypes.func.isRequired,
+  setIsAuthenticated: PropTypes.func.isRequired, // PropType for setIsAuthenticated
 };
 
 export default Popup;
