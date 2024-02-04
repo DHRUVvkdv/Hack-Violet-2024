@@ -2,8 +2,6 @@ import './App.scss'
 import { Routes, Route } from 'react-router-dom'
 import Home from './components/Home'
 import Questionnaire from './components/Questionnaire'
-import LoginButton from './components/LoginButton'
-import LogoutButton from './components/LogoutButton'
 
 function App() {
   return (
