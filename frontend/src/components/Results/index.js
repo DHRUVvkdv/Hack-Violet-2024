@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import CircleDot from '../CircleDot';
 import './index.scss';
+import TopNav from "../navbar/TopNav"
+
 
 let outline_day;
 
@@ -112,6 +114,7 @@ const ResultsPage = () => {
 
   return (
     <div className="results-container">
+      <TopNav />
       <div className="circle-dot-container">
         {Array.from({ length: numOfDots }, (_, index) => {
           const position = calculateDotPosition(index);
