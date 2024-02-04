@@ -53,7 +53,7 @@ const MenstrualCyclePage = () => {
         title="Weightlifting"
         description="Yoga focuses on flexibility, balance, and relaxation. It's beneficial for both body and mind." 
         isImageOnLeft={true}
-        backgroundColor="#e7cfcf"
+        backgroundColor="#fcf5f1"
         />
         <ExerciseFlashcard
         imageSrc= {YogaImage}
@@ -67,7 +67,7 @@ const MenstrualCyclePage = () => {
         title="Aerobic Exercise"
         description="Yoga focuses on flexibility, balance, and relaxation. It's beneficial for both body and mind." 
         isImageOnLeft={true}
-        backgroundColor="#e7cfcf"
+        backgroundColor="#fcf5f1"
         />
       </div>
       <div className="right-element">
