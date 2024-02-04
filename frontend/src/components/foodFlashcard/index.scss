@@ -1,6 +1,6 @@
 /* src/components/ExerciseFlashcard.css */
 
-.exercise-flashcard {
+.food-flashcard {
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -41,8 +41,9 @@
   }
   
   .flashcard-title {
-    font-size: 18px;
-    margin-bottom: 8px;
+    font-size: 28px;
+    margin-bottom: 15px;
+    font-weight: lighter;
     color: #333;
   }
   

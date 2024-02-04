@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import './index.scss'
 
 import ExerciseFlashcard from '../exerciseFlashcard'
-import FoodFlashcard from '../foodFlashcarc'
+import FoodFlashcard from '../foodFlashcard'
 
 import Weightlift from './weightlift.jpeg'
 import Running from './run.jpeg'
@@ -36,15 +36,15 @@ const MenstrualCyclePage = () => {
   const generalFoodData = {
     Menstruation:
       'Increase your intake of iron rich foods and vitamin C. Drink soothing tea, to combat cramps. Avoid or limit fatty foods, alcohol, caffeine, and salty foods.',
-    Follicular: '',
-    Ovulation: '',
-    Luteal: '',
+      Follicular: 'Why food matters: This helps support the body as it prepares to release an egg during the next phase, ovulation',
+      Ovulation: 'Continue with foods that support the follicular phase. Make sure you drink plenty of water to compensate for the water you’ll lose through sweating due to more intense workouts',
+      Luteal: 'Your cravings may increase, and it may be for less-than-healthy foods. Satisfy cravings with plenty of protein and high-fiber foods (like complex carbs and veggies). Stay hydrated and choose healthier snacks like dark chocolate, fruit and lightly salted nuts',
   }
 
   const mealFoodData = {
     Menstruation:
       'Grilled Salmon, Kale and sweet potato salad, Spicy sprouts, Broccoli and feta pasta salad',
-    Follicular: '',
+    Follicular: 'Include protein sources (lean meats, fish, legumes, chicken, tofu, lentils, beans) for cell repair and growth',
     Ovulation: '',
     Luteal: '',
   }
