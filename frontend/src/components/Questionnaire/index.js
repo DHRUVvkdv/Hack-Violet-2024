@@ -27,12 +27,37 @@ const Questionnaire = () => {
 
   const flashcardsData = [
     {
-      question: 'What is React?',
+      question: 'What is your height range?',
       answerType: 'buttons',
-      answers: ['A library', 'A framework', 'A dbms'],
+      answers: [
+        'Below 5 feet',
+        '5 feet to 5 feet 5 inches',
+        '5 feet 6 inches to 6 feet',
+        'Above 6 feet',
+      ],
     },
     {
-      question: 'How long did your period last?',
+      question: 'What is your weight range?',
+      answerType: 'buttons',
+      answers: [
+        'Below 100 lbs',
+        '100 lbs to 150 lbs',
+        '151 lbs to 200 lbs',
+        'Above 200 lbs',
+      ],
+    },
+    {
+      question: 'Do you experience cramps or uneasiness during your period?',
+      answerType: 'buttons',
+      answers: ['Yes, regularly', 'Occasionally', 'No, rarely', 'No, never'],
+    },
+    // {
+    //   question: 'What is your favorite type of outdoor activity?',
+    //   answerType: 'text', // Use 'text' for a freeform text response
+    //   placeholder: 'Enter your favorite outdoor activity',
+    // },
+    {
+      question: 'How long did your last period last?',
       answerType: 'buttons',
       answers: ['1-2 days', '3-4 days', '5-7 days', '7+ days'],
     },
