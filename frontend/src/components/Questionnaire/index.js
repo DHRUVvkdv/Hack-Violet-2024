@@ -8,10 +8,16 @@ import './index.scss'
 import TopNav from '../navbar/TopNav.js'
 import { jwtDecode } from 'jwt-decode'
 import axios from 'axios'
+import affirmations from '../../assets/Affirmations.js'
 
 const Questionnaire = () => {
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
+
+  function getRandomAffirmation() {
+    const index = Math.floor(Math.random() * affirmations.length)
+    return affirmations[index]
+  }
 
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -141,12 +147,10 @@ const Questionnaire = () => {
     <div className="questionnaire">
       <TopNav />
       <h1>Flashcard Questionnaire</h1>
-
       <ProgressBar
         totalSteps={flashcardsData.length}
         currentStep={currentFlashcardIndex + 1}
       />
-
       <div className="flashcard-container">
         {/* Render the appropriate flashcard based on the answer type */}
         {currentFlashcardIndex < flashcardsData.length &&
@@ -174,6 +178,7 @@ const Questionnaire = () => {
           </button>
         ) : null}
       </div>
+      <div class="affirmations">{getRandomAffirmation()}</div>
     </div>
   )
 }
