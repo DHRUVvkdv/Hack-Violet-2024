@@ -46,8 +46,7 @@ const MenstrualCyclePage = () => {
         ))}
       </div>
       <div className="middle-element">
-        <h2>Exercise</h2>
-        <p>{exerciseData[selectedPhase]}</p>
+        <h2 className='exercise-food'>Exercise</h2>
         <ExerciseFlashcard
         imageSrc= {Weightlift}
         title="Weightlifting"
@@ -71,7 +70,7 @@ const MenstrualCyclePage = () => {
         />
       </div>
       <div className="right-element">
-        <h2>Food</h2>
+        <h2 exercise-food>Food</h2>
         <p>{foodData[selectedPhase]}</p>
       </div>
     </div>
