@@ -124,8 +124,8 @@ const Questionnaire = () => {
       // Define the data to send
       const data = {
         email: email, // use the email from the state
-        startDate: new Date(selectedAnswers[2]), // use the start date from the state
-        duration: customFunction(selectedAnswers[1]), // use the duration from the state
+        startDate: new Date(selectedAnswers[4]), // use the start date from the state
+        duration: customFunction(selectedAnswers[3]), // use the duration from the state
       }
 
       // Make the axios request
