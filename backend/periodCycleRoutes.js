@@ -31,5 +31,26 @@ router.post("/periodCycle", async (req, res) => {
     res.status(500).send("Server error");
   }
 });
+router.get("/periodCycle/:email", async (req, res) => {
+  try {
+    const { email } = req.params;
+
+    // Find the latest period cycle for the given email
+    const periodCycle = await PeriodCycle.findOne({ email }).sort({
+      startDate: -1,
+    });
+
+    if (!periodCycle) {
+      return res
+        .status(404)
+        .json({ msg: "No period cycle found for this email" });
+    }
+
+    res.json(periodCycle);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
 
 module.exports = router;
