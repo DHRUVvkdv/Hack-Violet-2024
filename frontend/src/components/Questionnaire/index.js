@@ -35,12 +35,7 @@ const Questionnaire = () => {
     {
       question: 'What is your height range?',
       answerType: 'buttons',
-      answers: [
-        'Below 5 feet',
-        '5 feet to 5 feet 5 inches',
-        '5 feet 6 inches to 6 feet',
-        'Above 6 feet',
-      ],
+      answers: ['Below 5’', '5’0" - 5’5"', '5’6" - 6’', 'Above 6’'],
     },
     {
       question: 'What is your weight range?',
@@ -146,7 +141,7 @@ const Questionnaire = () => {
   return (
     <div className="questionnaire">
       <TopNav />
-      <h1>Flashcard Questionnaire</h1>
+      <h1>Help us personalize your experience!</h1>
       <ProgressBar
         totalSteps={flashcardsData.length}
         currentStep={currentFlashcardIndex + 1}

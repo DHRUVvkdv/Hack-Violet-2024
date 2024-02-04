@@ -47,7 +47,8 @@ export const Home = () => {
           />
         </h1>
         <h2>
-          Learn how your menstrual cycle affects your exercise and diet{' '}
+          Learn how your menstrual cycle affects your exercise and diet. <br />{' '}
+          Own your cycle, own your fitness!
           {backendOutput}{' '}
         </h2>
         <Link to="/questionnaire">
