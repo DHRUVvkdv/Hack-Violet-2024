@@ -9,7 +9,7 @@ const CircleDot = ({ x, y, onClick, isSelected, color, number, showOutline }) =>
       left: x,
       top: y,
       background: isSelected ? '#383838' : color,
-      outline: showOutline ? '1px solid #ff96c4' : 'none', // Set outline style conditionally
+      outline: showOutline ? '1px solid #f77f60' : 'none', // Set outline style conditionally
       boxShadow: isSelected ? '0 0 0 1px #000' : 'none', // Remove box shadow or customize as needed
     }}
     onClick={onClick}
