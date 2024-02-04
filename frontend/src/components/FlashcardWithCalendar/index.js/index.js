@@ -1,23 +1,25 @@
 // components/FlashcardWithCalendar/index.js
-import React, { useState } from 'react';
-import { CalendarComponent } from '@syncfusion/ej2-react-calendars';
-import './index.scss';
+import React, { useState } from 'react'
+import { CalendarComponent } from '@syncfusion/ej2-react-calendars'
+import './index.scss'
 
 const FlashcardWithCalendar = ({ question, onAnswerSelect }) => {
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [showAnswer, setShowAnswer] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null)
+  const [showAnswer, setShowAnswer] = useState(false)
 
   const handleDateChange = (e) => {
-    setSelectedDate(e.value);
-    onAnswerSelect(e.value); // Notify the parent component about the answer selection
-  };
+    setSelectedDate(e.value)
+    onAnswerSelect(e.value) // Notify the parent component about the answer selection
+  }
 
   const handleRevealAnswer = () => {
-    setShowAnswer(true);
-  };
+    setShowAnswer(true)
+  }
 
   return (
-    <div className={`flashcard-with-calendar ${showAnswer ? 'show-answer' : ''}`}>
+    <div
+      className={`flashcard-with-calendar ${showAnswer ? 'show-answer' : ''}`}
+    >
       <div className="card-content">
         <div className={`question ${showAnswer ? 'hidden' : ''}`}>
           <p>{question}</p>
@@ -34,7 +36,7 @@ const FlashcardWithCalendar = ({ question, onAnswerSelect }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default FlashcardWithCalendar;
+export default FlashcardWithCalendar
