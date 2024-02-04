@@ -1,65 +1,64 @@
 /* src/pages/MenstrualCyclePage/index.scss */
 
 .menstrual-cycle-page {
-    display: flex;
-    background-color: #f0f0f0;
-    height: 100vh;
-    margin-top: 45px;
-  }
-  
-  .left-element {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    width: 30vw;
-  
-    button {
-      width: 100%;
-      height: 24%;
-      border: none;
-      background-color: #c78a94;
-      color: #fff;
-      font-size: 35px;
-      font-family: 'Coolvetica';
-      cursor: pointer;
-      transition: background-color 0.3s, box-shadow 0.3s;
+  display: flex;
+  background-color: #f0f0f0;
+  height: 100vh;
+  margin-top: 45px;
+}
 
-  
-      &:hover {
-        background-color: #84535d;
-      }
-  
-      &.selected {
-        background-color: #9b6873;
-      }
-  
-      &:focus {
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      }
-  
+.left-element {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+
+  button {
+    width: 100%;
+    height: 24%;
+    border: none;
+    background-color: #c78a94;
+    color: #fff;
+    font-size: 35px;
+    font-family: 'Coolvetica';
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+
+
+    &:hover {
+      background-color: #84535d;
     }
+
+    &.selected {
+      background-color: #9b6873;
+    }
+
+    &:focus {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
   }
-  
-  .middle-element,
-  .right-element {
-    flex: 2;
-    background-color: #ffeef2;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-  
-    h2 {
-      font-size: 24px;
-      margin-bottom: 15px;
-      color: #9b6873;
-      text-align: center;
-      font-family: 'Coolvetica';
-      font-weight: 100;
-      font-size: 40px;
-    }
-  
-    p {
-      font-size: 18px;
-      color: #555;
-    }
+}
+
+.middle-element,
+.right-element {
+  flex: 2;
+  background-color: #ffeef2;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #9b6873;
+    text-align: center;
+    font-family: 'Coolvetica';
+    font-weight: 100;
+    font-size: 40px;
   }
-  
+
+  p {
+    font-size: 18px;
+    color: #555;
+  }
+}
