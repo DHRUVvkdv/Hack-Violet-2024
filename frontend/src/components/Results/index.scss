@@ -1,0 +1,58 @@
+.results-container {
+    background-image: url('./bg.jpg'); // Adjust the path accordingly
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+  }
+  
+  .circle-dot-container {
+    position: absolute;
+  }
+  
+  .selected-dot-info {
+    font-size: 20px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+
+  .main-text {
+    width: 30vw;
+  }
+
+  .circle-dot {
+    position: absolute;
+    width: 20px; /* Adjust the size of the dot as needed */
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ccc; /* Default color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .circle-dot.highlight {
+    background-color: yellow; /* Highlight color */
+  }
+  
+  .learn {
+    background-color: transparent;
+    //border: 2px solid #313131;
+    color: #212121;
+    //border-radius: 20px;
+    transition: .5s ease;
+
+    &:hover {
+      //background-color: #212121;
+      //color: #fff;
+      text-decoration: underline;
+    }
+  }

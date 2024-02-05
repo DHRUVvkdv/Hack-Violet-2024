@@ -1,0 +1,71 @@
+// Popup.scss
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); // Semi-transparent background for overlay
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+  }
+  
+  .popup {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .popup-header {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .close-btn {
+    cursor: pointer;
+  }
+  
+  .popup-content {
+    margin-bottom: 20px;
+    margin-right: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .popup-footer {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+  }
+  
+  .popup-footer span {
+    cursor: pointer;
+    color: #4caf50;
+  }
+  
+  .popup-footer span:hover {
+    text-decoration: underline;
+  }
+  

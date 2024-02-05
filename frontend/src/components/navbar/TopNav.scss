@@ -1,0 +1,81 @@
+// TopNav.scss
+.top-nav-overlay {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    opacity: 95%;
+  }
+  
+  .top-nav {
+    font-size: 170%;
+    background-color: #fff; // Adjust the background color as needed
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // Add a shadow for a subtle effect
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px; // Adjust the height as needed
+  }
+  
+  li {
+    margin: 0;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #333; // Adjust the text color as needed
+  }
+  
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .active {
+    font-weight: bold; // Style the active link as needed
+  }
+  .auth-button {
+    background-color: #a06868;
+    color: white; 
+    border: none; 
+    cursor: pointer;
+    padding: 10px 20px;
+    text-align: center; 
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s; 
+    border-radius: 12px;
+    transition: transform 1.0s;
+  }
+  
+  .auth-button:hover {
+    background-color: #e997a3;
+    color: white; 
+    transform: scale(1.1);
+  }
+  span {
+    color: #b4876b;
+    transition: background-color 0.5s ease, text-shadow 0.5s ease-in-out; /* Combine transitions */
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    display: inline-block; /* Add this line for the transform property */
+  }
+  
+  span:hover {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    transform: scale(1.1);
+  }
+  
+  
+  
+  

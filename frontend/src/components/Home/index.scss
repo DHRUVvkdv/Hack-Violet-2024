@@ -1,3 +1,17 @@
+.container.home-page {
+    background-image: url('./Icon/BG.jpeg'); // Adjust the path accordingly
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; // Set the height as per your design
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    // Add other styles as needed for your layout
+  }
+
 .home-page {
 
     .text-zone {
@@ -5,15 +19,15 @@
         left: 10%;
         top: 50%;
         transform: translateY(-50%);
-        width: 40%;
+        width: 60%;
         max-height: 90%;
 
         // -webkit-text-stroke: 1px black;
     }
 
     h1 {
-        color: #fff;
-        font-size: 90px;
+        color: #3c3c3c;
+        font-size: 130px;
         margin: 0;
         font-family: 'Coolvetica';
         font-weight: 400;
@@ -21,13 +35,64 @@
     }
 
     h2 {
-        color: #8d8d8d;
-        margin-top: 20px;
+        color: #8b4747;
         font-weight: 400;
-        font-size: 11px;
-        font-family: sans-serif;
+        font-size: 18px;
+        font-family: sans-'serif';
         letter-spacing: 3px;
         animation: fadeIn 1s 1.8s backwards;
     }
+
+    .goto-btn {
+        scale: 1.6;
+        padding: 8px 14px;
+        margin-top: 30px;
+        margin-left: 30px;
+        margin-bottom: 150px;
+        background-color: #fff9fd;
+        border: 1px solid #a06868;
+        border-radius: 30px;
+        color: #a06868;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  
+        &:hover {
+          scale: 1.8;
+          background-color: #a06868;
+          color: #fff;
+          transition: 1s;
+        }
+    }
+    // h3{
+    //     position: relative;
+    //     font-size: 14vw;
+    //     color:#252839;
+    //     -webkit-text-stroke: 0.3vw #383d52;
+    //     text-transform: uppercase;
+
+    // }
+    // h3::before
+    // {
+    //     content: attr(data-text);
+    //     position: absolute;
+    //     top: 0;
+    //     Left: 0;
+    //     width: 0;
+    //     height: 100%;
+    //     color: #01fe87;
+    //     -webkit-text-stroke: 0vw #383d52;
+    //     border-right: 2px solid #01fe87;
+    //     overflow: hidden;
+    //     animation: animate 6s linear infinite;
+    // }
+    // @keyframes animate {
+    //     0%, 10%, 100% {
+    //         width: 0;
+    //     }
+    //     70%, 90% {
+    //         width: 100%;
+    //     }
+
+    // }
     
 }

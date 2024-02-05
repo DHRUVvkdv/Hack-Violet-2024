@@ -1,0 +1,35 @@
+.circle-dot {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ccc;
+  cursor: pointer;
+  scale: 300%;
+  transition: all 2s ease-in-out;
+  animation: bounceIn;
+  animation-duration: 1s;
+  animation-delay: 1s;
+  //box-shadow: 0 0 .5px; /* Added box shadow */
+
+  &:hover {
+    transform: scale(1.2);
+    background-color: #aaa;
+    animation: bounceIn;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    transition: .3s;/* Added box shadow for hover effect */
+    z-index: 5;
+  }
+
+  &.highlight {
+    background-color: yellow;
+    box-shadow: 0 0 10px rgba(255, 255, 0, 0.8); /* Adjusted box shadow for highlight effect */
+  }
+
+  p {
+    color: white;
+    font-family: sans-serif;
+    font-weight: 100;
+  }
+}
