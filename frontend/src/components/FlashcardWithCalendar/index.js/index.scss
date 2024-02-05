@@ -2,14 +2,13 @@
 @import url("https://cdn.syncfusion.com/ej2/material.css");
 
 .flashcard-with-calendar {
-  width: 60vw;
-  height: 35vw;
-  border-radius: 10px;
+  width: 700px;
+  height: 400px;
+  border-radius: 50px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
   transition: transform 0.3s ease;
-  background-color: #fff1fe;
+  background-color: #ffffff;
 
   &:hover {
     transform: scale(1.01);
@@ -32,6 +31,7 @@
 
     .question {
       padding: 16px;
+      padding-bottom: 0;
       text-align: center;
       font-size: 16px;
       backface-visibility: hidden;
@@ -39,7 +39,18 @@
 
     .calendar-container {
       width: 100%;
-      padding: 20px;
+      margin-bottom: 30px;
+      margin-top: 0;
+      margin-left: 60px;
+      align-items: center;
+      padding-bottom: 30px;
+      scale: 0.95;
+      padding-top: 0;
+    }
+
+    .question {
+      color: #a06868;
+      font-size: 35px;
     }
 
     .answer {

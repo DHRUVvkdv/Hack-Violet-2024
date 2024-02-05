@@ -5,7 +5,7 @@ export const Calendar = () => {
 
     return (
         <div>
-            <CalendarComponent></CalendarComponent>
+            <CalendarComponent className='cal'></CalendarComponent>
         </div>
     )
 }

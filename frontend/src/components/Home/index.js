@@ -2,13 +2,14 @@
 import './index.scss'
 import { useEffect, useState } from 'react'
 import AnimatedLetters from '../AnimatedLetters'
-import Logo from './Icon'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
+import TopNav from '../navbar/TopNav'
 
 export const Home = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
-  const healthArray = ['h', 'e', 'a', 'l', 't', 'h', ' ']
-  const youArray = [' ', 'you']
+  const healthArray = ['r', 'h', 'y', 't', 'h', 'm', ' ']
+  const youArray = [' ', 'r', 'i', 's', 'e']
   const [backendOutput, setBackendOutput] = useState('')
 
   useEffect(() => {
@@ -30,6 +31,7 @@ export const Home = () => {
 
   return (
     <div className="container home-page">
+      <TopNav />
       <div className="text-zone">
         <h1>
           <AnimatedLetters
@@ -44,10 +46,15 @@ export const Home = () => {
             idx={15}
           />
         </h1>
-        <h2>Tech {backendOutput} </h2>
+        <h2>
+          Learn how your menstrual cycle affects your exercise and diet. <br />{' '}
+          Own your cycle, own your fitness!
+          {backendOutput}{' '}
+        </h2>
+        <Link to="/questionnaire">
+          <button className="goto-btn">Enter</button>
+        </Link>
       </div>
-
-      <Logo />
     </div>
   )
 }

@@ -1,0 +1,54 @@
+/* src/components/ExerciseFlashcard.css */
+
+.food-flashcard {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background-color: #f5dada;
+    overflow: hidden;
+    height: 27.3vh;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 2; 
+
+    &:hover {
+        transform: scale(1.01);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        z-index: 1; 
+      }
+  }
+  
+  .flashcard-image {
+    border-radius: 100px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin: 0 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: scale(1.01);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        z-index: 1; 
+        
+      }
+  }
+  
+  .flashcard-content {
+    flex: 1;
+    padding: 10px;
+    margin: 0 10px;
+  }
+  
+  .flashcard-title {
+    font-size: 28px;
+    margin-bottom: 15px;
+    font-weight: lighter;
+    color: #333;
+  }
+  
+  .flashcard-description {
+    font-size: 16px;
+    color: #555;
+  }
+  

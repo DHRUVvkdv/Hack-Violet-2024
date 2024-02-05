@@ -1,6 +1,10 @@
-// components/Questionnaire/index.scss
 
 .questionnaire {
+    background-image: url('./bg.jpeg'); // Adjust the path accordingly
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,6 +13,46 @@
   }
   
   .flashcard-container {
-    margin-top: 20px; /* Add margin or adjust as needed */
+    margin-top: 20px; 
   }
+
+  .btn {
+    font-size: 1.5em;
+    border: none;
+    background-color: transparent;
+    font-family: 'Helvetica Neue';
+    cursor: pointer;
+    margin: 15px 20px;
+    color: #a06868;
+    border-radius: 3px;
+    border: .5px solid #a06868;
+    transition-duration: .2s;
+
+  }
+
+  .btn:hover {
+    scale: 1.1;
+    color: #fff;
+    background-color: #a06868;
+    box-shadow: 3px 3px 0 0 transparent,
+    0 2px 0 0 #a06868;
+  }
+  .affirmations {
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    transition: all 0.3s ease; /* Added transition for a smooth hover effect */
+  }
+  
+  .affirmations:hover {
+    box-shadow: 0px 12px 20px 0px rgba(0,0,0,0.25); /* Increased box shadow on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
+  }
+  
+  
   
