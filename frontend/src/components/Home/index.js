@@ -19,9 +19,13 @@ export const Home = () => {
     }, 400)
   }, [])
 
+
+
+
   const fetchBackendData = async () => {
     try {
-      const response = await axios.post('http://localhost:8000/api/algorithm') // Adjust endpoint URL and changed from axios.get to axios.post
+      const BACKEND_URL = process.env.REACT_APP_BACKEND_URL
+      const response = await axios.post(`${BACKEND_URL}/api/algorithm`)
       setBackendOutput(response.data.result) // Changed from response.data to response.data.result
     } catch (error) {
       console.error('Error fetching backend data:', error)
