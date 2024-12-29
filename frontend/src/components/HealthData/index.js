@@ -14,7 +14,7 @@ import FoodImage from './food.jpeg'
 import Vegan from './vegan.jpeg'
 import Meat from './meat.jpeg'
 
-import TopNav from '../navbar/TopNav'
+import TopNav from '../navbar/topnav'
 
 const MenstrualCyclePage = () => {
   const phases = ['Menstruation', 'Follicular', 'Ovulation', 'Luteal']

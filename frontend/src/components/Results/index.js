@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import CircleDot from '../CircleDot'
 import './index.scss'
-import TopNav from '../navbar/TopNav'
+import TopNav from '../navbar/topnav';
 import axios from 'axios'
 import { jwtDecode } from 'jwt-decode'
 import { Link } from 'react-router-dom'

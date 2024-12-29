@@ -5,7 +5,7 @@ import FlashcardWithCalendar from '../FlashcardWithCalendar/index.js'
 import { useNavigate } from 'react-router-dom' // Import the useNavigate hook
 import ProgressBar from '../ProgressBar' // Import the ProgressBar component
 import './index.scss'
-import TopNav from '../navbar/TopNav.js'
+import TopNav from '../navbar/topnav';
 import { jwtDecode } from 'jwt-decode'
 import axios from 'axios'
 import affirmations from '../../assets/Affirmations.js'

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import AnimatedLetters from '../AnimatedLetters'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import TopNav from '../navbar/TopNav'
+import TopNav from '../navbar/topnav';
 
 export const Home = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
