@@ -16,7 +16,7 @@ const Popup = ({ onClose, setIsAuthenticated }) => {
   const [showSignUpForm, setShowSignUpForm] = useState(false);
   const [name, setName] = useState('');
 
-  const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL
   console.log('Current BACKEND_URL:', BACKEND_URL) // Add this line to verify the URL
 
   useEffect(() => {
