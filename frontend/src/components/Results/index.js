@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 
 let outline_day
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL
 
 const ResultsPage = () => {
   const [selectedDot, setSelectedDot] = useState(3)

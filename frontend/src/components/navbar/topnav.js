@@ -14,7 +14,7 @@ const TopNav = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
 
-  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL
+  const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL
 
 
   useEffect(() => {

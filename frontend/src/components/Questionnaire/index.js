@@ -11,7 +11,7 @@ import axios from 'axios'
 import affirmations from '../../assets/Affirmations.js'
 
 const Questionnaire = () => {
-  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL
+  const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
 
