@@ -8,7 +8,14 @@ const app = express();
 const port = 8000;
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(bodyParser.json());
 app.use("/api/users", userRoutes, periodCycleRoutes);
 app.use("/api/data", periodCycleRoutes);
