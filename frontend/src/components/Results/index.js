@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom'
 
 let outline_day
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL
+
 const ResultsPage = () => {
   const [selectedDot, setSelectedDot] = useState(3)
   const [phase, setPhase] = useState('Click on a day to learn more')
@@ -58,7 +60,7 @@ const ResultsPage = () => {
     const fetchDataOnPageLoad = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/data/periodCycle/${email}`
+          `${BACKEND_URL}/api/data/periodCycle/${email}`
         )
         console.log(response.data)
         setPeriodDuration(response.data.duration || 3)
@@ -89,7 +91,7 @@ const ResultsPage = () => {
   async function getPeriodCycle(userEmail) {
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/data/periodCycle/${userEmail}`
+        `${BACKEND_URL}/api/data/periodCycle/${userEmail}`
       )
       console.log(response.data)
       setPeriodDuration(response.data.duration || 3)

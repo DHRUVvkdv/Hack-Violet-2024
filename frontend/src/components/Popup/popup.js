@@ -16,6 +16,9 @@ const Popup = ({ onClose, setIsAuthenticated }) => {
   const [showSignUpForm, setShowSignUpForm] = useState(false);
   const [name, setName] = useState('');
 
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL
+  console.log('Current BACKEND_URL:', BACKEND_URL) // Add this line to verify the URL
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -23,7 +26,7 @@ const Popup = ({ onClose, setIsAuthenticated }) => {
       const decoded = jwtDecode(token);
       const email = decoded.email;
       axios
-        .get(`http://localhost:8000/api/users/username/${email}`)
+        .get(`${BACKEND_URL}/api/users/username/${email}`)
         .then((response) => {
           const { firstName, lastName } = response.data;
           setName(`${firstName} ${lastName}`);
@@ -37,13 +40,13 @@ const Popup = ({ onClose, setIsAuthenticated }) => {
   const signIn = async () => {
     try {
       const signInResponse = await axios.post(
-        'http://localhost:8000/api/users/signin',
+        `${BACKEND_URL}/api/users/signin`,
         {
           email,
           password,
         }
       );
-  
+
       setIsAuthenticated(true);
       setShowSignInForm(false);
       localStorage.setItem('token', signInResponse.data.token);
@@ -65,7 +68,7 @@ const Popup = ({ onClose, setIsAuthenticated }) => {
 
     try {
       const checkUserResponse = await axios.get(
-        `http://localhost:8000/api/users/checkuser/${email}`
+        `${BACKEND_URL}/api/users/checkuser/${email}`
       );
       if (checkUserResponse.data.msg === 'User already exists') {
         alert('This email is already registered. Please use a different email.');
@@ -73,7 +76,7 @@ const Popup = ({ onClose, setIsAuthenticated }) => {
       }
 
       const signUpResponse = await axios.post(
-        'http://localhost:8000/api/users/signup',
+        `${BACKEND_URL}/api/users/signup`,
         {
           firstName,
           lastName,

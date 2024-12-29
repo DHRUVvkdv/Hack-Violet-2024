@@ -14,6 +14,9 @@ const TopNav = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
 
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL
+
+
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
@@ -22,7 +25,7 @@ const TopNav = () => {
       const email = decoded.email
       setEmail(email)
       axios
-        .get(`http://localhost:8000/api/users/username/${email}`)
+        .get(`${BACKEND_URL}/api/users/username/${email}`)
         .then((response) => {
           const { firstName, lastName } = response.data
           setName(`${firstName} ${lastName}`)

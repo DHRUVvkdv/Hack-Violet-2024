@@ -11,6 +11,7 @@ import axios from 'axios'
 import affirmations from '../../assets/Affirmations.js'
 
 const Questionnaire = () => {
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
 
@@ -125,7 +126,7 @@ const Questionnaire = () => {
 
       // Make the axios request
       const response = await axios.post(
-        'http://localhost:8000/api/data/periodCycle',
+        `${BACKEND_URL}/api/data/periodCycle`,
         data
       )
 
