@@ -8,13 +8,18 @@ const app = express();
 const port = 8000;
 
 // Middlewares
-app.use(cors());
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+app.use(function (req, res, next) {
+  const allowedOrigins = ['http://localhost:3000', 'https://rhythm-and-rise.onrender.com', 'https://rhythm-and-rise.onrender.com/'];
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, UPDATE");
   next();
 });
+
 app.use(bodyParser.json());
 app.use("/api/users", userRoutes, periodCycleRoutes);
 app.use("/api/data", periodCycleRoutes);
