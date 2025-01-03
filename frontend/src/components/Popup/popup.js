@@ -1,9 +1,9 @@
-// Popup.js
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
-import './Popup.scss'; // Import your styles if needed
+import './Popup.scss';
+import LoadingMessage from '../LoadingMessage/LoadingMessage';
 
 const Popup = ({ onClose, setIsAuthenticated }) => {
   const [mode, setMode] = useState('login');
@@ -15,9 +15,9 @@ const Popup = ({ onClose, setIsAuthenticated }) => {
   const [showSignInForm, setShowSignInForm] = useState(true);
   const [showSignUpForm, setShowSignUpForm] = useState(false);
   const [name, setName] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL
-  console.log('Current BACKEND_URL:', BACKEND_URL) // Add this line to verify the URL
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -39,6 +39,10 @@ const Popup = ({ onClose, setIsAuthenticated }) => {
 
   const signIn = async () => {
     try {
+      setIsLoading(true);
+      // Add artificial delay - TESTING ONLY  
+      // await new Promise(resolve => setTimeout(resolve, 100000)); // 3 second delay
+
       const signInResponse = await axios.post(
         `${BACKEND_URL}/api/users/signin`,
         {
@@ -50,6 +54,9 @@ const Popup = ({ onClose, setIsAuthenticated }) => {
       setIsAuthenticated(true);
       setShowSignInForm(false);
       localStorage.setItem('token', signInResponse.data.token);
+
+      // Only close after successful sign in
+      onClose();
     } catch (error) {
       console.error('Sign in error:', error);
       if (error.response && error.response.status === 400) {
@@ -57,6 +64,8 @@ const Popup = ({ onClose, setIsAuthenticated }) => {
       } else {
         alert('An error occurred. Please try again.');
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -67,6 +76,7 @@ const Popup = ({ onClose, setIsAuthenticated }) => {
     }
 
     try {
+      setIsLoading(true);
       const checkUserResponse = await axios.get(
         `${BACKEND_URL}/api/users/checkuser/${email}`
       );
@@ -88,109 +98,112 @@ const Popup = ({ onClose, setIsAuthenticated }) => {
       setIsAuthenticated(true);
       setShowSignUpForm(false);
       localStorage.setItem('token', signUpResponse.data.token);
+
+      // Only close after successful sign up
+      onClose();
     } catch (error) {
       alert(`Signup failed: ${error.response.data}`);
+    } finally {
+      setIsLoading(false);
     }
   };
-
-  const handleSignOut = () => {
-    localStorage.removeItem('token');
-    setIsAuthenticated(false);
-    onClose();
-  };
-
 
   const handleModeChange = (newMode) => {
     setMode(newMode);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (mode === 'login') {
-      signIn();
+      await signIn();
     } else if (mode === 'signup') {
-      signUp();
+      await signUp();
     }
 
-    // Reset the form fields
-    setEmail('');
-    setPassword('');
-    setFirstName('');
-    setLastName('');
-    setConfirmPassword('');
-
-    // Close the popup
-    onClose();
+    // Reset form fields only after successful submission
+    if (!isLoading) {
+      setEmail('');
+      setPassword('');
+      setFirstName('');
+      setLastName('');
+      setConfirmPassword('');
+    }
   };
 
   return (
     <div className="popup-overlay">
       <div className="popup">
-        <div className="popup-header">
-          <span onClick={onClose} className="close-btn">
-            &times;
-          </span>
-        </div>
-        <div className="popup-content">
-          <h2>{mode === 'login' ? 'Log In' : 'Sign Up'}</h2>
-          {mode === 'login' ? (
-            <>
-              <label>Email:</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <label>Password:</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </>
-          ) : (
-            <>
-              <label>First Name:</label>
-              <input
-                type="text"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-              <label>Last Name:</label>
-              <input
-                type="text"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
-              <label>Email:</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <label>Password:</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <label>Confirm Password:</label>
-              <input
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-            </>
-          )}
-          <button onClick={handleSubmit}>Submit</button>
-        </div>
-        <div className="popup-footer">
-          <span onClick={() => handleModeChange('login')}>
-            Log In
-          </span>
-          <span onClick={() => handleModeChange('signup')}>
-            Sign Up
-          </span>
-        </div>
+        {isLoading ? (
+          <LoadingMessage />
+        ) : (
+          <>
+            <div className="popup-header">
+              <span onClick={onClose} className="close-btn">
+                &times;
+              </span>
+            </div>
+            <div className="popup-content">
+              <h2>{mode === 'login' ? 'Log In' : 'Sign Up'}</h2>
+              {mode === 'login' ? (
+                <>
+                  <label>Email:</label>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <label>Password:</label>
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </>
+              ) : (
+                <>
+                  <label>First Name:</label>
+                  <input
+                    type="text"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                  <label>Last Name:</label>
+                  <input
+                    type="text"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                  <label>Email:</label>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <label>Password:</label>
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <label>Confirm Password:</label>
+                  <input
+                    type="password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                  />
+                </>
+              )}
+              <button onClick={handleSubmit}>Submit</button>
+            </div>
+            <div className="popup-footer">
+              <span onClick={() => handleModeChange('login')}>
+                Log In
+              </span>
+              <span onClick={() => handleModeChange('signup')}>
+                Sign Up
+              </span>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
@@ -198,9 +211,7 @@ const Popup = ({ onClose, setIsAuthenticated }) => {
 
 Popup.propTypes = {
   onClose: PropTypes.func.isRequired,
-  onLogin: PropTypes.func.isRequired,
-  onSignUp: PropTypes.func.isRequired,
-  setIsAuthenticated: PropTypes.func.isRequired, // PropType for setIsAuthenticated
+  setIsAuthenticated: PropTypes.func.isRequired,
 };
 
 export default Popup;
