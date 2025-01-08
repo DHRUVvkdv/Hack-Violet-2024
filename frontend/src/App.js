@@ -6,9 +6,13 @@ import Home from './components/Home'
 import Questionnaire from './components/Questionnaire'
 import Results from './components/Results'
 import HealthData from './components/HealthData/index.js'
+import { inject } from "@vercel/analytics"
 // import TopNav from './components/navbar/topnav.js'; // Import the TopNav component
 
 function App() {
+  React.useEffect(() => {
+    inject();
+  }, []);
   return (
     <>
       {/* <TopNav /> Include the TopNav component */}
